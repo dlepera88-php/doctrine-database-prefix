@@ -5,7 +5,7 @@ like cPanel, for example.  Eg: etc_dbname.
 
 So, I make this package. I hope this help u.
 
-# Basic Usege #
+# Basic Usage #
 
 ```php
 <?php 
