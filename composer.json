@@ -1,0 +1,24 @@
+{
+    "name": "dlepera88-php/doctrine-prefixes",
+    "description": "Set database and/or table prefix.",
+    "license": "MIT",
+    "version": "0.0.1",
+    "require": {
+        "php": ">=7.0",
+        "doctrine/event-manager": "^1.1",
+        "doctrine/orm": "^2.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "DoctrinePrefixes\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\DoctrinePrefixes\\": "tests"
+        }
+    }
+}
