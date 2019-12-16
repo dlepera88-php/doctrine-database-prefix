@@ -58,14 +58,14 @@ class DatabasePrefix implements DoctrinePrefixInterface
 
         if (!$classMetadata->isInheritanceTypeSingleTable() || $classMetadata->getName() === $classMetadata->rootEntityName) {
             $classMetadata->setPrimaryTable([
-                'name' => $this->addPrefix($classMetadata->getTableName())
+                'schema' => $this->addPrefix($classMetadata->getSchemaName())
             ]);
         }
 
         foreach ($classMetadata->getAssociationMappings() as $fieldName => $mapping) {
             if ($mapping['type'] == ClassMetadataInfo::MANY_TO_MANY && $mapping['isOwningSide']) {
-                $mappedTableName = $mapping['joinTable']['name'];
-                $classMetadata->associationMappings[$fieldName]['joinTable']['name'] = $this->addPrefix($mappedTableName);
+                $mappedTableName = $mapping['joinTable']['schema'];
+                $classMetadata->associationMappings[$fieldName]['joinTable']['schema'] = $this->addPrefix($mappedTableName);
             }
         }
     }
@@ -73,12 +73,12 @@ class DatabasePrefix implements DoctrinePrefixInterface
     /**
      * Add prefix on table name.
      * Full table name is consider like this: dbname.dbo.TableName (like SQL Server) or dbname.TableName (like MySQL).
-     * @param string $tableNameFull
+     * @param string $schemaName
      * @return string
      */
-    private function addPrefix(string $tableNameFull): string
+    private function addPrefix(string $schemaName): string
     {
-        $tableParts = explode('.', $tableNameFull);
+        $tableParts = explode('.', $schemaName);
         $tableParts[0] = "{$this->prefix}{$tableParts[0]}";
 
         return implode('.', $tableParts);
