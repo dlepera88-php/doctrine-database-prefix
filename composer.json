@@ -2,7 +2,7 @@
     "name": "dlepera88-php/doctrine-prefixes",
     "description": "Set database and/or table prefix.",
     "license": "MIT",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "require": {
         "php": ">=7.0",
         "doctrine/event-manager": "^1.1",

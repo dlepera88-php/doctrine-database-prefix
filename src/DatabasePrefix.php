@@ -64,8 +64,8 @@ class DatabasePrefix implements DoctrinePrefixInterface
 
         foreach ($classMetadata->getAssociationMappings() as $fieldName => $mapping) {
             if ($mapping['type'] == ClassMetadataInfo::MANY_TO_MANY && $mapping['isOwningSide']) {
-                $mappedTableName = $mapping['joinTable']['schema'];
-                $classMetadata->associationMappings[$fieldName]['joinTable']['schema'] = $this->addPrefix($mappedTableName);
+                $mappedTableName = $mapping['joinTable']['name'];
+                $classMetadata->associationMappings[$fieldName]['joinTable']['name'] = $this->addPrefix($mappedTableName);
             }
         }
     }
